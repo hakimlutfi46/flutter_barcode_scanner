@@ -50,28 +50,6 @@ class _ScannerScreenState extends State<ScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.blue,
-        title: const Text(
-          'Scanning...',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              color: Colors.white,
-              isFlashOn ? Icons.flash_on : Icons.flash_off,
-            ),
-            onPressed: () {
-              setState(() {
-                isFlashOn = !isFlashOn;
-              });
-              cameraController.toggleTorch();
-            },
-          ),
-        ],
-      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -86,7 +64,47 @@ class _ScannerScreenState extends State<ScannerScreen> {
             ),
           ),
           Positioned(
-            bottom: 230, // Jarak dari bawah
+              top: 53,
+              left: 40,
+              right: 40,
+              child: Text(
+                'Scan Barcode',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )),
+          Positioned(
+              top: 40,
+              left: 22,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  size: 25,
+                  color: Colors.white,
+                ),
+              )),
+          Positioned(
+              top: 40,
+              right: 20,
+              child: IconButton(
+                icon: Icon(
+                  color: Colors.white,
+                  isFlashOn ? Icons.flash_on : Icons.flash_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isFlashOn = !isFlashOn;
+                  });
+                  cameraController.toggleTorch();
+                },
+              )),
+          Positioned(
+            bottom: 245, // Jarak dari bawah
             left: 50,
             right: 50,
             child: Center(
@@ -123,8 +141,8 @@ class ScannerOverlayPainter extends CustomPainter {
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
 
-    final double scanBoxWidth = 250;
-    final double scanBoxHeight = 100;
+    final double scanBoxWidth = 260;
+    final double scanBoxHeight = 150;
     final double cornerLength = 20; // Panjang garis sudut
     final Offset scanBoxTopLeft = Offset(
       (size.width - scanBoxWidth) / 2,
