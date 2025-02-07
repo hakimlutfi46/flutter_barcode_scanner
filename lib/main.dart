@@ -1,4 +1,4 @@
-import 'package:barcode_scanner/page/barcode_scanner.dart';
+import 'package:barcode_scanner/page/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Barcode Scanner',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const BarcodeScannerPage(),
+      home: MainPage(),
     );
   }
 }
